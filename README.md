@@ -2,10 +2,11 @@ This repo is forked from:
 https://github.com/hashicorp/terraform-azurerm-vault
 
 https://github.com/hashicorp/terraform-azurerm-consul
+
 Originally made by [Gruntwork](http://www.gruntwork.io/).
 
 I have merged the two projects, and updated the code.
-Since the repo has not been updated or maintained for over a year.
+Since the two repo's has not been updated or maintained for over a year.
 
 
 # Vault and Consul Azure Module
@@ -22,7 +23,7 @@ run alongside your apps::
 ![Vault architecture](https://raw.githubusercontent.com/bartdzkan/terraform-azurerm-vault-consul/master/_docs/architecture.png)
 
 This Module includes:
-###Vault Cluster
+##Vault Cluster
 
 * [install-vault](https://github.com/bartdzkan/terraform-azurerm-vault-consul/tree/master/modules/install-vault): This module can be used to install Vault. It can be used in a
   [Packer](https://www.packer.io/) template to create a Vault
@@ -42,7 +43,7 @@ This Module includes:
 
 
 
-###Consul Cluster
+##Consul Cluster
 * [install-consul](https://github.com/bartdzkan/terraform-azurerm-vault-consul/tree/master/modules/install-consul): This module can be used to install Vault. It can be used in a
   [Packer](https://www.packer.io/) template to create a Vault
   [Azure Manager Image](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/build-image-with-packer).
@@ -68,8 +69,6 @@ Instead of having to figure out the details of how to run a piece of infrastruct
 existing code that has been proven in production. And instead of maintaining all that infrastructure code yourself,
 you can leverage the work of the Module community and maintainers, and pick up infrastructure improvements through
 a version number bump.
-
-
 
 
 ## How do you use this Module?
@@ -149,7 +148,7 @@ You will need to use a bastion host/Jump Box to access Vault and Consul. Recomme
 
   7. Destroy
   * In the root directory - Run 'terraform destroy'
-  * You might need to run this twice since sometimes Azure is slow. 
+  * You might need to run this twice since sometimes Azure is slow.
   * Go to examples/azure-resource-project - Run 'terraform destroy' - or just run this to destroy everything.
 
 
