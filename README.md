@@ -1,3 +1,12 @@
+This repo is forked from:
+https://github.com/hashicorp/terraform-azurerm-vault
+https://github.com/hashicorp/terraform-azurerm-consul
+Originally made by Gruntworks. 
+
+I have merged the two projeccts, and updated the code. 
+Since the repo has not been updated or maintained for over a year. 
+
+
 # Vault Azure Module
 
 This repo contains a Module to deploy a [Vault](https://www.vaultproject.io/) cluster on
