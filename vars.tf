@@ -50,7 +50,7 @@ variable "key_data" {
 variable "allowed_inbound_cidr_blocks" {
   description = "A list of CIDR-formatted IP address ranges from which the Azure Instances will allow connections to Consul"
   type        = "list"
-  default     = ["0.0.0.0/0", "10.0.0.0/16"]
+  default     = ["10.0.0.0/16"]
 
 }
 

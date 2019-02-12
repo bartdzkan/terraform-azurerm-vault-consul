@@ -49,7 +49,6 @@ resource "azurerm_lb_nat_pool" "consul_lbnatpool_rpc" {
   backend_port = 8300
   frontend_ip_configuration_name = "PublicIPAddress"
 }
-
 resource "azurerm_lb_nat_pool" "consul_lbnatpool_http" {
   count = "${var.associate_public_ip_address_load_balancer ? 1 : 0}"
   resource_group_name = "${var.resource_group_name}"
@@ -62,18 +61,19 @@ resource "azurerm_lb_nat_pool" "consul_lbnatpool_http" {
   frontend_ip_configuration_name = "PublicIPAddress"
 }
 
-resource "azurerm_lb_backend_address_pool" "consul_bepool" {
-  count = "${var.associate_public_ip_address_load_balancer ? 1 : 0}"
-  resource_group_name = "${var.resource_group_name}"
-  loadbalancer_id = "${azurerm_lb.consul_access.id}"
-  name = "BackEndAddressPool"
-}
 resource "azurerm_lb_probe" "consul_probe" {
   resource_group_name = "${var.resource_group_name}"
   loadbalancer_id = "${azurerm_lb.consul_access.id}"
   name                = "consul-running-probe"
   port                = "${var.http_api_port}"
 }
+resource "azurerm_lb_backend_address_pool" "consul_bepool" {
+  count = "${var.associate_public_ip_address_load_balancer ? 1 : 0}"
+  resource_group_name = "${var.resource_group_name}"
+  loadbalancer_id = "${azurerm_lb.consul_access.id}"
+  name = "BackEndAddressPool"
+}
+
 resource "azurerm_lb_rule" "consul_api_port" {
   count = "${var.associate_public_ip_address_load_balancer ? 1 : 0}"
   resource_group_name = "${var.resource_group_name}"
@@ -85,6 +85,10 @@ resource "azurerm_lb_rule" "consul_api_port" {
   frontend_ip_configuration_name = "PublicIPAddress"
   backend_address_pool_id = "${azurerm_lb_backend_address_pool.consul_bepool.id}"
   probe_id = "${azurerm_lb_probe.consul_probe.id}"
+  depends_on = ["azurerm_lb_nat_pool.consul_lbnatpool_http"]
+
+
+
 }
 
 #---------------------------------------------------------------------------------------------------------------------

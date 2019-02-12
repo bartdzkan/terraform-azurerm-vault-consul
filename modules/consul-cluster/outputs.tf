@@ -17,3 +17,6 @@ output "load_balancer_id" {
 output "backend_pool_id" {
   value = "${azurerm_lb_backend_address_pool.consul_bepool.*.id}"
 }
+output "admin_user_name" {
+  value = "${var.admin_user_name}"
+}
