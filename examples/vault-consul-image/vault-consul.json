@@ -34,7 +34,7 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "{{template_dir}}/../../../terraform-azurerm-vault-master",
+      "source": "{{template_dir}}/../../../terraform-azurerm-vault-consul-master",
       "destination": "/tmp"
     },
     {
@@ -61,7 +61,7 @@
         "echo \"deb https://packages.microsoft.com/repos/azure-cli/ wheezy main\" | sudo tee /etc/apt/sources.list.d/azure-cli.list",
         "apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893",
         "apt-get update && apt-get install -y git libssl-dev libffi-dev python-dev build-essential apt-transport-https azure-cli --allow-unauthenticated",
-        "git clone --branch master https://{{user `github_oauth_token`}}@github.com/bartdzkan/terraform-azurerm-vault.git /tmp/terraform-vault-azure",
+        "git clone --branch master https://{{user `github_oauth_token`}}@github.com/bartdzkan/terraform-azurerm-vault-consul.git /tmp/terraform-vault-azure",
         "/tmp/terraform-vault-azure/modules/install-vault/install-vault --version {{user `vault_version`}}",
         "/tmp/terraform-vault-azure/modules/install-consul/install-consul --version {{user `consul_version`}}",
         "/tmp/terraform-vault-azure/modules/install-dnsmasq/install-dnsmasq"
